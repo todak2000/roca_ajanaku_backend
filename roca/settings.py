@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 from decouple import config
-from corsheaders.defaults import default_headers
+# from corsheaders.defaults import default_headers
 # import django_heroku # remove in local machine
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -150,6 +150,6 @@ CORS_ALLOWED_ORIGINS = [
     "https://todak2000.github.io"
 ]
 
-CORS_ALLOW_HEADERS = default_headers + (
-    'Access-Control-Allow-Origin',
-)
+# CORS_ALLOW_HEADERS = default_headers + (
+#     'Access-Control-Allow-Origin',
+# )
