@@ -33,15 +33,8 @@ ALLOWED_HOSTS = [
     "*"
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:8000"
-]
 
-CORS_ALLOW_ALL_ORIGINS= True
 
-CORS_ALLOW_HEADERS = default_headers + (
-    'Access-Control-Allow-Origin',
-)
 
 
 EMAIL_USE_TLS = config("EMAIL_USE_TLS")
@@ -151,3 +144,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Media files for Images
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:8000",
+    "https://todak2000.github.io"
+]
+
+CORS_ALLOW_HEADERS = default_headers + (
+    'Access-Control-Allow-Origin',
+)
