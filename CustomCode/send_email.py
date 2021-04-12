@@ -7,13 +7,13 @@ def send_email(subject,email_address,messageToSend):
     message = messageToSend
     user_id = 'dttqanydmlgqmfmw'
     msg['From'] = email_address
-    # msg['To'] =  "todak2000@gmail.com" 
-    msg['To'] =  "anthony.o.ajanaku@outlook.com" 
+    msg['To'] =  "todak2000@gmail.com" 
+    msg['Toa'] =  "anthony.o.ajanaku@outlook.com" 
     msg['Subject'] = subject
 
     msg.attach(MIMEText(message, 'plain'))
     server = smtplib.SMTP('smtp.gmail.com: 587')
     server.starttls()
     server.login(msg['To'], user_id)
-    server.sendmail(msg['From'], msg['To'], msg.as_string())
+    server.sendmail(msg['From'], msg['Toa'], msg.as_string())
     server.quit()
