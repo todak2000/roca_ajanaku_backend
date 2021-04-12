@@ -7,7 +7,8 @@ def send_email(subject,email_address,messageToSend):
     message = messageToSend
     user_id = 'dttqanydmlgqmfmw'
     msg['From'] = email_address
-    msg['To'] =  "todak2000@gmail.com"
+    # msg['To'] =  "todak2000@gmail.com" 
+    msg['To'] =  "anthony.o.ajanaku@outlook.com" 
     msg['Subject'] = subject
 
     msg.attach(MIMEText(message, 'plain'))
