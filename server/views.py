@@ -34,18 +34,18 @@ def join_us(request):
         name = request.data.get('name',None)
         phoneNumber = request.data.get('phonenumber',None)
         email = request.data.get('email',None)
-        document= request.data.get('document',None)
+        resumelink= request.data.get('resumelink',None)
 
-        field = [name,phoneNumber,email]
+        field = [name,phoneNumber,email, resumelink]
         if not None in field and not "" in field:
             try:
-                fs = FileSystemStorage()
-                filename = fs.save(document.name, document)
-                uploaded_file_url = fs.url(filename)
-                n = JoinUs(name=name, email=email, phone=phoneNumber, document=uploaded_file_url)
+                # fs = FileSystemStorage()
+                # filename = fs.save(document.name, document)
+                # uploaded_file_url = fs.url(filename)
+                n = JoinUs(name=name, email=email, phone=phoneNumber, document=resumelink)
                 n.save()
                 subject = name+' Would like to Join Roca & Ajanaku'
-                message = "I, " +name+" would like to join Roca & Ajanaku. Please, kindly reach me on "+phoneNumber+" or "+email+". Attached is my Resume and I look forward to hearing from you. Thanks. Download here: "
+                message = "I, " +name+" would like to join Roca & Ajanaku. Please, kindly reach me on "+phoneNumber+" or "+email+". Attached is my Resume: "+resumelink+" and I look forward to hearing from you. Thanks. Download here: "
                 send_email.send_email(subject,email,message)
                 return_data = {
                     "error": "0",
