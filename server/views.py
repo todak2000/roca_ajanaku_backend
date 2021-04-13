@@ -56,7 +56,8 @@ def join_us(request):
                 return_data = {
                     "error": True,
                     "errorStatus": "31",
-                    "message": str(e)
+                    "serverMessage": str(e),
+                    "message": "Server issues! Kindly try again later"
                 }
         else:
             return_data = {
@@ -68,6 +69,7 @@ def join_us(request):
         return_data = {
             "error": True,
             "errorStatus": "3",
-            "message": str(e)
+            "serverMessage": str(e),
+            "message": "Server issues! Kindly try again later"
         }
     return Response(return_data)
