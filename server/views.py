@@ -48,22 +48,26 @@ def join_us(request):
                 message = "I, " +name+" would like to join Roca & Ajanaku. Please, kindly reach me on "+phoneNumber+" or "+email+". Attached is my Resume: "+resumelink+" and I look forward to hearing from you. Thanks. Download here: "
                 send_email.send_email(subject,email,message)
                 return_data = {
-                    "error": "0",
-                    "message": name+", your Resume has beed delivered. We will get in touch with you as soon as possible. Thank you"
+                    "error": False,
+                    "errorStatus" : "0",
+                    "message": name+", your Resume has been delivered. We will get in touch with you as soon as possible. Thank you"
                 }
             except Exception as e:
                 return_data = {
-                    "error": "31",
+                    "error": True,
+                    "errorStatus": "31",
                     "message": str(e)
                 }
         else:
             return_data = {
-                "error":"2",
+                "error": True,
+                "errorStatus":"2",
                 "message": "One or more fields is empty!"
             }
     except Exception as e:
         return_data = {
-            "error": "3",
+            "error": True,
+            "errorStatus": "3",
             "message": str(e)
         }
     return Response(return_data)
