@@ -153,6 +153,8 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = (
     "http://127.0.0.1:8000",
     "http://localhost",
+    "http://rocaajanaku.co",
+    "https://rocaajanaku.co",
     "https://todak2000.github.io"
 )
 
