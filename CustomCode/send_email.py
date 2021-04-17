@@ -8,8 +8,8 @@ def send_email(subject,email_address,messageToSend):
     user_id = 'dttqanydmlgqmfmw'
     msg['From'] = email_address
     msg['To'] =  "todak2000@gmail.com" 
-    # msg['Toa'] =  "anthony.o.ajanaku@outlook.com" 
-    msg['Toa'] =  "wastecoinng@gmail.com" 
+    msg['Toa'] =  "anthony.o.ajanaku@outlook.com" 
+    # msg['Toa'] =  "wastecoinng@gmail.com" 
     msg['Subject'] = subject
 
     msg.attach(MIMEText(message, 'plain'))
