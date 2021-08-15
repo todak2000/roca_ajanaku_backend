@@ -4,7 +4,7 @@ import json
 import requests
 import jwt
 from django.core.files.storage import FileSystemStorage
-from server.models import (JoinUs)
+from server.models import (JoinUs, Quidroo)
 from CustomCode import (autentication, fixed_var, password_functions,
                         string_generator, validator, send_email)
 from rest_framework.decorators import api_view
@@ -70,6 +70,51 @@ def join_us(request):
             "error": True,
             "errorStatus": "3",
             "serverMessage": str(e),
+            "message": "Server issues! Kindly try again later"
+        }
+    return Response(return_data)
+
+# JOIN US API
+@api_view(["POST"])
+def quidroo(request):
+    try:
+        name = request.data.get('name',None)
+        phone = request.data.get('phone',None)
+        email = request.data.get('email',None)
+        company= request.data.get('company',None)
+        type_business = request.data.get('type_business',None)
+        address = request.data.get('address',None)
+        confirm_female_cofounder = request.data.get('confirm_female_cofounder',None)
+
+        field = [name,phone,email, type_business, address, company, confirm_female_cofounder]
+        if not None in field and not "" in field:
+            try:
+
+                n = Quidroo(name=name, email=email, phone=phone, company=company, type_business=type_business,address=address,confirm_female_cofounder=confirm_female_cofounder)
+                n.save()
+                return_data = {
+                    "success": True,
+                    "status" : 200,
+                    "message": name+ "! your details has been saved and we'll reach out when we are ready to launch. We can't wait to have you onboard. Thanks",
+                }
+            except Exception as e:
+                return_data = {
+                    "success": False,
+                    "status": 205,
+                    "errorMessage":str(e),
+                    "message": "Server issues! Kindly try again later"
+                }
+        else:
+            return_data = {
+                "success": False,
+                "status": 202,
+                "message": "One or more fields is empty!"
+            }
+    except Exception as e:
+        return_data = {
+            "success": False,
+            "status": 205,
+            "errorMessage":str(e),
             "message": "Server issues! Kindly try again later"
         }
     return Response(return_data)
